@@ -5,7 +5,7 @@ package main
 
 import (
 	. "fmt"
-	//"runtime"
+	"runtime"
 	"time"
 )
 
@@ -27,13 +27,13 @@ func decrease_i(total_steps int) {
 
 func main() {
 	total_steps := 1000000
-	//runtime.GOMAXPROCS(runtime.NumCPU()) // I guess this is a hint to what GOMAXPROCS does...
+	runtime.GOMAXPROCS(runtime.NumCPU()) // I guess this is a hint to what GOMAXPROCS does...
 	// Try doing the exercise both with and without it!
 	//go someGoroutine() // This spawns someGoroutine() as a goroutine
 	go increase_i(total_steps) // This spawns someGoroutine() as a goroutine
 	go decrease_i(total_steps) // We have no way to wait for the completion of a goroutine (without additional syncronization of some sort)
 	// We'll come back to using channels in Exercise 2. For now: Sleep.
-	time.Sleep(100 * time.Millisecond)
+	time.Sleep(1000 * time.Millisecond)
 	Println(i)
 	Println("Hello from main!")
 }
